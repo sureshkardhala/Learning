@@ -10,7 +10,6 @@ class HelloWorld {
         if(pos==2){
             return secondNumber;
         }
-        int prev=firstNumber + secondNumber;
         int res=0;
         for(int i=3; i<=pos; i++){
             res = firstNumber + secondNumber;
@@ -21,10 +20,11 @@ class HelloWorld {
     }
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the posisition of fibnocci series:");
-        int pos = sc.nextInt();
-        int res = fibSeries(0,1,pos);
-        System.out.println(res);
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Enter the posisition of fibnocci series:");
+            int pos = sc.nextInt();
+            int res = fibSeries(0,1,pos);
+            System.out.println(res);
+        }
         }
 }

@@ -36,9 +36,10 @@ class HelloWorld {
     }
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter number to check armstrong or not: ");
-        int num = sc.nextInt();
-        System.out.println(armStrongNumberOrNot(num));
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Enter number to check armstrong or not: ");
+            int num = sc.nextInt();
+            System.out.println(armStrongNumberOrNot(num));
+        }
         }
 }
