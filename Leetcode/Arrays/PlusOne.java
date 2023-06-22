@@ -49,36 +49,32 @@ digits does not contain any leading 0's.
 
  */
 
-class Solution {
-    public int pow(int n, int x){
-        int mul=1;
-        for(int i=0 ; i<n ; i++){
-            mul*=10;
-        }
-        return x*mul;
-    }
 
-    public int [] generateArray(int x, int[]nums){
-        int rem=0, i=nums.length-1;
-         System.out.println(x);
-        while(x>0){
-            rem=x%10;
-            nums[i]=rem;
-            x=x/10;
-            i--;
-        }
-        return nums;
-    }
-    
-    
+class Solution {   
     public int[] plusOne(int[] digits) {
-        int sum = 0;
-        for(int i=0; i<digits.length; i++){
-            sum+=pow(digits.length-i-1, digits[i]);
+        int len= digits.length;
+        boolean status =false;
+        if(digits[len-1]<9){
+            digits[len-1]++;
+            return digits;
         }
-        sum+=1;
-        String str = Integer.toString(sum);
-        int [] nums = new int [str.length()];
-        return generateArray(sum, nums);
+        for(int i=len-1; i>=0; i--){
+            if(digits[i]<9){
+                digits[i]++;
+                status=false;
+                break;
+            }
+            if(digits[i]>=9){
+                digits[i]=0;
+                status=true;
+            }
+            
+        }
+        System.out.println(status);
+        if(status){
+            digits = new int[len+1];
+            digits[0]=1;
+        }
+        return digits;
     }
 }

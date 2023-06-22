@@ -63,3 +63,23 @@ n == height.length
         return max;
     }
 }
+
+//O(n) complexity Best solution 
+class Solution2 {
+    public int maxArea(int[] height) {
+        int h=height.length;
+        int left=0, right=h-1, max=0;
+        while(left<right){
+            int area = (right-left)*Math.min(height[left], height[right]);
+            if(max<area){
+                max=area;
+            }
+            if(height[right]<height[left]){
+                right--;
+            } else{
+                left++;
+            }
+        }
+        return max;
+    }
+} 
