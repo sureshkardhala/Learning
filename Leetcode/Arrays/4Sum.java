@@ -38,21 +38,15 @@ class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Set<List<Integer>> resSet = new HashSet<>();
         Arrays.sort(nums);
-        int len = nums.length-1;
-        List<List<Integer>> list2= new ArrayList<>();
-        // if(nums.length == 4){
-        //     int fSum = Math.abs(nums[0]+nums[1]+nums[2]+nums[3]);
-        //     if(fSum != target){
-        //         return list2;
-        //     }
-        // }
-        for(int i=0; i<len-2; i++){
-            for(int l=len;l>2; l-- ){
-                int j=i+1, k=l-1;
-                while(j<k){
-                    int sum = nums[i]+nums[j]+nums[k]+nums[l];
-                    // System.out.println(sum);
-                    if(sum == target){
+        int len = nums.length - 1;
+        List<List<Integer>> list2 = new ArrayList<>();
+
+        for (int i = 0; i < len - 2; i++) {
+            for (int l = len; l > i + 2; l--) {
+                int j = i + 1, k = l - 1;
+                while (j < k) {
+                    int sum = nums[i] + nums[j] + nums[k] + nums[l];
+                    if (sum == target) {
                         List<Integer> list1 = new ArrayList<>();
                         list1.add(nums[i]);
                         list1.add(nums[j]);
@@ -62,16 +56,16 @@ class Solution {
                         j++;
                         k--;
                     }
-                    if(sum<target){
+                    if (sum < target) {
                         j++;
                     }
-                    if(sum>target){
+                    if (sum > target) {
                         k--;
                     }
                 }
             }
         }
-        for(List a : resSet){
+        for (List<Integer> a : resSet) {
             list2.add(a);
         }
         return list2;
